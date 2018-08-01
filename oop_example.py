@@ -7,7 +7,7 @@ import abc
 
 # optional to extend from abc.ABC (abstract base class)
 # in python 2 use super class: abc.ABCMeta('ABC', (), {})
-# or use: __metaclass__ = abc.ABCMeta
+# or use: AbstractOrder(metaclass=abc.ABCMeta)
 class AbstractOrder(abc.ABC):
 
     def __init__(self, name):

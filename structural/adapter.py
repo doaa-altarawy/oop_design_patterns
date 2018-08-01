@@ -1,29 +1,40 @@
 """
-    Converts one interface into another
-    wrap existing classs with another interface
+    - Adapter: Converts one interface into another (make them compatible)
+               wraps existing class with another interface
+    Related:
+    - Proxy: wraps an existing object to control/check/simplify its services for
+             the callers
+
+    - The example here uses Strategy design pattern (behavioural):
+        Encapsulate classes and then make them interchangeable
 """
 
 from abc import abstractmethod, ABC
 
 
 class MySQL:
+    """Handle MySQL DB connection"""
+
     def connect_to_DB(self, uri):
         print('many steps to connect to DB')
 
     def run_query(self, query):
-        print('Mysql specific')
+        print('Mysql specific query')
+
 
 class Postgres:
+    """Handle Postgres DB connection"""
 
     def create_connection(self, another_uri):
         print('many steps to connect to DB')
 
     def query_DB(self, query):
-        print('Mysql specific')
+        print('Some Postgres SQL specific query')
 
 # --------------------------------------
 
-class Adapter(ABC):
+
+class DBAdapter(ABC):
 
     @abstractmethod
     def connect(self, path, username, password):
@@ -34,7 +45,7 @@ class Adapter(ABC):
         pass
 
 
-class MySQL_Adapter(Adapter):
+class MySQLAdapter(DBAdapter):
     def __init__(self):
         self.database = MySQL()
 
@@ -45,7 +56,8 @@ class MySQL_Adapter(Adapter):
     def query(self, query_text):
         self.database.run_query(query_text)
 
-class Postgres_Adapter(Adapter):
+
+class PostgresAdapter(DBAdapter):
     def __init__(self):
         self.database = Postgres()
 
@@ -58,8 +70,8 @@ class Postgres_Adapter(Adapter):
         
 # --------------------------------------------------
 
-db = MySQL_Adapter()
-db = Postgres_Adapter()
+db = MySQLAdapter()
+db = PostgresAdapter()
 
 
 db.connect('long/path', 'name', 'pass')

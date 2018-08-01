@@ -25,7 +25,7 @@ class ShapePrototype:
 class Shape:
     def __init__(self):
         self.type = None
-        seld.n_sides = None
+        self.n_sides = None
 
     def clone(self):
         return copy.copy(self)
@@ -34,9 +34,9 @@ class Shape:
         return 'Type: {} | # of sides: {} '.format(self.type, self.n_sides)
 
 class Circle(Shape):
-
+    pass
 class Square(Shape):
-
+    pass
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 car = Car()

@@ -1,8 +1,9 @@
 """
-    Iterator classs in python
+    Iterator class in python
 
-    - Compatiable with python 2
+    - Compatible with python 2
 """
+
 
 class Iterator(object):
 
@@ -15,7 +16,7 @@ class Iterator(object):
         self.current = self.start
         return self
 
-    def next(self):  # for Compatiablity with python 2
+    def next(self):  # for Compatibility with python 2
         return self.__next__()
 
     def __next__(self):
@@ -27,6 +28,7 @@ class Iterator(object):
             return tmp
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 iterator = Iterator(0, 10)
 for i in iterator:

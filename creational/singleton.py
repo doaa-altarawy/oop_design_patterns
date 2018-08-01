@@ -27,7 +27,7 @@ class Singleton:
         return str(self.__shared_state)
 
     def get_list(self):
-        return self._shared_state
+        return self.__shared_state
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
